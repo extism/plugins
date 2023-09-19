@@ -1,0 +1,35 @@
+on:
+  workflow_dispatch:
+  release:
+    types: [created]
+
+jobs:
+  release:
+    name: Build and Release Plug-ins
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          target: wasm32-unknown-unknown
+      - name: Build
+        run: make build
+      - name: List directory contents
+        run: |
+          ls -la plugins
+      # - name: Upload Artifact to Summary
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: wasmfiles
+      #     if-no-files-found: error
+      #     path: |
+      #       plugins/*.wasm
+      - name: Upload Artifact to Release
+        uses: softprops/action-gh-release@v1
+        with:
+          if-no-files-found: error
+          files: |
+            plugins/*.wasm
+        if: startsWith(github.ref, 'refs/tags/')
