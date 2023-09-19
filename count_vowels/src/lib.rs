@@ -4,10 +4,10 @@ use serde::Serialize;
 const VOWELS: &str = "aeiouAEIOU";
 
 #[derive(Serialize)]
-struct VowelReport<'a> {
+struct VowelReport {
     pub count: u32,
     pub total: u32,
-    pub vowels: &'a str,
+    pub vowels: String,
 }
 
 fn get_total() -> u32 {
@@ -22,11 +22,19 @@ fn store_total(total: u32) {
     var::set("total", total.to_string()).ok();
 }
 
+fn get_vowels() -> String {
+    match config::get("vowels") {
+        Some(v) => v,
+        None => VOWELS.to_string(),
+    }
+}
+
 #[plugin_fn]
-pub unsafe fn count_vowels<'a>(input: String) -> FnResult<Json<VowelReport<'a>>> {
+pub unsafe fn count_vowels(input: String) -> FnResult<Json<VowelReport>> {
     let mut count = 0;
+    let vowels = get_vowels();
     for ch in input.chars() {
-        if VOWELS.contains(ch) {
+        if vowels.contains(ch) {
             count += 1;
         }
     }
@@ -38,7 +46,7 @@ pub unsafe fn count_vowels<'a>(input: String) -> FnResult<Json<VowelReport<'a>>>
     let output = VowelReport {
         count,
         total,
-        vowels: VOWELS,
+        vowels,
     };
 
     Ok(Json(output))
