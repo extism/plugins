@@ -6,6 +6,19 @@ Some up to date Extism plugins for use in demos and tests.
 
 Check the [releases](https://github.com/extism/plugins/releases) for stable builds.
 
+You can download the latest plugin by name like this:
+
+```
+curl https://github.com/extism/plugins/releases/latest/download/count_vowels.wasm
+```
+
+or a specific version like this:
+
+```
+curl https://github.com/extism/plugins/releases/download/v0.0.3/count_vowels.wasm
+```
+
+> *Note*: Each plugin should also have a debug build at {name}.debug.wasm
 
 ## Development
 
