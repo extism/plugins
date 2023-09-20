@@ -6,7 +6,7 @@ extern "ExtismHost" {
 }
 
 #[plugin_fn]
-pub unsafe fn reflect(input: String) -> FnResult<String> {
+pub fn reflect(input: String) -> FnResult<String> {
     let input = unsafe { host_reflect(input)? };
     Ok(input)
 }
