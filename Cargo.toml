@@ -2,10 +2,13 @@
 members = [
 	"count_vowels",
 	"reflect",
-	"store_credit"	
+	"store_credit",
+  "loop_forever",
 ]
+resolver = "2"
 
 [workspace.dependencies]
 extism-pdk = "0.3.4"
 anyhow = "1.0.75"
 serde = "1.0.188"
+
