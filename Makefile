@@ -1,6 +1,10 @@
 build:
 	cargo build
 	cargo build --release
+	@find . -type f -name Makefile | grep -v "^./Makefile" | while read dir; do \
+		echo "Executing in $$dir"; \
+		(cd `dirname $$dir` && $(MAKE)); \
+	done
 	@ls target/wasm32-unknown-unknown/release/*.wasm | while read name; do \
 		cp $$name plugins/; \
 	done
