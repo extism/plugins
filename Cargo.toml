@@ -4,6 +4,7 @@ members = [
 	"reflect",
 	"store_credit",
   "loop_forever",
+  "count_vowels_kvstore",
 ]
 resolver = "2"
 

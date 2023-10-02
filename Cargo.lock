@@ -36,6 +36,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "count_vowels_kvstore"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "extism-pdk",
+ "serde",
+]
+
+[[package]]
 name = "extism-manifest"
 version = "0.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
