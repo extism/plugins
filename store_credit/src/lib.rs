@@ -17,6 +17,7 @@ struct Customer {
 
 #[derive(Deserialize)]
 struct ChargeSuceededEvent {
+    #[allow(unused)]
     pub event_type: String,
     pub customer: Customer,
 }

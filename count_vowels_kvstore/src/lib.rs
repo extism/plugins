@@ -32,8 +32,8 @@ fn store_total(total: u32) -> Result<()> {
 
 fn get_vowels() -> String {
     match config::get("vowels") {
-        Some(v) => v,
-        None => VOWELS.to_string(),
+        Ok(Some(v)) => v,
+        _ => VOWELS.to_string(),
     }
 }
 
