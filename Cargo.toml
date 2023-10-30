@@ -9,7 +9,7 @@ members = [
 resolver = "2"
 
 [workspace.dependencies]
-extism-pdk = {git = "https://github.com/extism/rust-pdk", branch = "extism-env-namespace"} #"0.3.4"
+extism-pdk = {git = "https://github.com/extism/rust-pdk"}
 anyhow = "1.0.75"
 serde = "1.0.188"
 
