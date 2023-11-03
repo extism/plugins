@@ -105,6 +105,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "http"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "extism-pdk",
+ "serde",
+]
+
+[[package]]
 name = "itertools"
 version = "0.11.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
