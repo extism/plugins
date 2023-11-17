@@ -12,3 +12,4 @@ build:
 		export newFilename=$$(echo $$name | sed 's/\.wasm/.debug.wasm/g'); \
 		cp $$name plugins/$$(basename $$newFilename); \
 	done
+	@for i in *.wat; do wasm-tools parse $$i -o plugins/$${i%.wat}.wasm; done
