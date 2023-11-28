@@ -30,7 +30,7 @@ fn get_vowels() -> String {
 }
 
 #[plugin_fn]
-pub unsafe fn count_vowels(input: String) -> FnResult<Json<VowelReport>> {
+pub fn count_vowels(input: String) -> FnResult<Json<VowelReport>> {
     let mut count = 0;
     let vowels = get_vowels();
     for ch in input.chars() {
