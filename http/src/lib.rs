@@ -15,7 +15,7 @@ struct HttpRequestWithBody {
 }
 
 #[plugin_fn]
-pub unsafe fn http_post(Json(input): Json<HttpRequestWithBody>) -> FnResult<Vec<u8>> {
+pub fn http_post(Json(input): Json<HttpRequestWithBody>) -> FnResult<Vec<u8>> {
     let res = http::request::<&str>(&input.req, Some(&input.data))?;
     let res = res.body();
     Ok(res)
