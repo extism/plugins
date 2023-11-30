@@ -14,18 +14,17 @@ jobs:
         with:
           toolchain: stable
           target: wasm32-unknown-unknown
+
+      - name: Setup `wasm-tools`
+        uses: bytecodealliance/actions/wasm-tools/setup@v1
+
       - name: Build
         run: make build
+
       - name: List directory contents
         run: |
           ls -la plugins
-      # - name: Upload Artifact to Summary
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: wasmfiles
-      #     if-no-files-found: error
-      #     path: |
-      #       plugins/*.wasm
+
       - name: Upload Artifact to Release
         uses: softprops/action-gh-release@v1
         with:
