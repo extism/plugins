@@ -5,7 +5,8 @@ members = [
 	"store_credit",
   "loop_forever",
   "count_vowels_kvstore",
-	"http"
+	"http",
+  "greet"
 ]
 resolver = "2"
 

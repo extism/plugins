@@ -105,6 +105,13 @@ dependencies = [
 ]
 
 [[package]]
+name = "greet"
+version = "0.1.0"
+dependencies = [
+ "extism-pdk",
+]
+
+[[package]]
 name = "http"
 version = "0.1.0"
 dependencies = [
