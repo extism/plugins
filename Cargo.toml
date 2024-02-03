@@ -6,7 +6,7 @@ members = [
   "loop_forever",
   "count_vowels_kvstore",
 	"http",
-  "greet"
+	"greet"
 ]
 resolver = "2"
 
