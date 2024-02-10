@@ -1,9 +1,9 @@
 use extism_pdk::*;
 
 #[plugin_fn]
-pub unsafe fn http_get(Json(input): Json<HttpRequest>) -> FnResult<Vec<u8>> {
+pub fn http_get(Json(input): Json<HttpRequest>) -> FnResult<Memory> {
     let res = http::request::<()>(&input, None)?;
-    let res = res.body();
+    let res = res.to_memory()?;
     Ok(res)
 }
 
@@ -15,8 +15,8 @@ struct HttpRequestWithBody {
 }
 
 #[plugin_fn]
-pub fn http_post(Json(input): Json<HttpRequestWithBody>) -> FnResult<Vec<u8>> {
+pub fn http_post(Json(input): Json<HttpRequestWithBody>) -> FnResult<Memory> {
     let res = http::request::<&str>(&input.req, Some(&input.data))?;
-    let res = res.body();
+    let res = res.into_memory();
     Ok(res)
 }
