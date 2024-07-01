@@ -8,6 +8,7 @@ members = [
 	"http",
 	"greet",
 	"memory",
+	"sleep",
 ]
 resolver = "2"
 
