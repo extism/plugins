@@ -3,15 +3,16 @@ members = [
 	"count_vowels",
 	"reflect",
 	"store_credit",
-  "loop_forever",
-  "count_vowels_kvstore",
+	"loop_forever",
+	"count_vowels_kvstore",
 	"http",
-	"greet"
+	"greet",
+	"memory",
+	"sleep",
 ]
 resolver = "2"
 
 [workspace.dependencies]
-extism-pdk = {git = "https://github.com/extism/rust-pdk"}
+extism-pdk = { git = "https://github.com/extism/rust-pdk" }
 anyhow = "1.0.75"
 serde = "1.0.188"
-
