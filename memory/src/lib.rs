@@ -8,7 +8,10 @@ struct AllocRequest {
 
 #[plugin_fn]
 pub unsafe fn alloc_memory(Json(input): Json<AllocRequest>) -> FnResult<()> {
-    _ = extism::alloc(input.bytes);
+    let offs = extism::alloc(input.bytes);
+    if offs == 0 {
+        return Err(WithReturnCode::new(Error::msg("Failed to allocate memory"), 1));
+    }
 
     Ok(())
 }
@@ -16,7 +19,10 @@ pub unsafe fn alloc_memory(Json(input): Json<AllocRequest>) -> FnResult<()> {
 #[plugin_fn]
 pub unsafe fn alloc_var(Json(input): Json<AllocRequest>) -> FnResult<()> {
     let buffer = vec![0u8; input.bytes as usize];
-    _ = var::set("buffer", buffer);
+
+    if let Err(e) = var::set("buffer", buffer) {
+       return Err(WithReturnCode::from(e));
+    }
 
     Ok(())
 }
