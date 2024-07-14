@@ -1,0 +1,15 @@
+[package]
+name = "read_write"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+anyhow = {workspace = true}
+extism-pdk = {workspace = true}
+serde = {workspace = true}
+
+[lib]
+crate_type = ["cdylib"]
+
+[build]
+target = "wasm32-wasi"
