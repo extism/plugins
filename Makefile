@@ -1,3 +1,5 @@
+
+wasi_white_list="read_write"
 build:
 	cargo build
 	cargo build --release
@@ -21,11 +23,20 @@ build:
 
 # 	wasm32-wasi
 	@ls target/wasm32-wasi/release/*.wasm | while read name; do \
-		cp $$name plugins/; \
+		for i in $(wasi_white_list); do \
+			if [ "$$i" = "$$(basename $$name | sed 's/\.wasm//g')" ]; then \
+				cp $$name plugins/; \
+			fi; \
+		done; \
 	done
+
 	@ls target/wasm32-wasi/debug/*.wasm | while read name; do \
-		export newFilename=$$(echo $$name | sed 's/\.wasm/.debug.wasm/g'); \
-		cp $$name plugins/$$(basename $$newFilename); \
+		newFilename=$$(echo $$name | sed 's/\.wasm/.debug.wasm/g'); \
+		for i in $(wasi_white_list); do \
+			if [ "$$i" = "$$(basename $$name | sed 's/\.wasm//g')" ]; then \
+				cp $$name plugins/$$(basename $$newFilename); \
+			fi; \
+		done; \
 	done
 
 	@for i in *.wat; do wasm-tools parse $$i -o plugins/$${i%.wat}.wasm; done
