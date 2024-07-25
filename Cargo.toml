@@ -9,6 +9,7 @@ members = [
 	"greet",
 	"memory",
 	"sleep",
+	"read_write",
 ]
 resolver = "2"
 

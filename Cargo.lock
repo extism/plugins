@@ -16,12 +16,6 @@ checksum = "d468802bab17cbc0cc575e9b053f41e72aa36bfa6b7f55e3529ffa43161b97fa"
 
 [[package]]
 name = "base64"
-version = "0.21.4"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9ba43ea6f343b788c8764558649e08df62f86c6ef251fdaeb1ffd010a9ae50a2"
-
-[[package]]
-name = "base64"
 version = "0.22.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "72b3254f16251a8381aa12e40e3c4d2f0199f8c6508fbecb9d91f575e0fbb8c6"
@@ -49,7 +43,7 @@ name = "count_vowels"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "extism-pdk 1.0.0-beta.0",
+ "extism-pdk 1.2.0 (git+https://github.com/extism/rust-pdk)",
  "serde",
 ]
 
@@ -58,7 +52,7 @@ name = "count_vowels_kvstore"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "extism-pdk 1.0.0-beta.0",
+ "extism-pdk 1.2.0 (git+https://github.com/extism/rust-pdk)",
  "serde",
 ]
 
@@ -76,26 +70,12 @@ checksum = "5443807d6dff69373d433ab9ef5378ad8df50ca6298caf15de6e52e24aaf54d5"
 
 [[package]]
 name = "extism-convert"
-version = "0.2.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "74ab6cd70509e6d74b7c3587f823a2061cfb65b111b4173bd882858eaa87e4a3"
-dependencies = [
- "anyhow",
- "base64 0.21.4",
- "prost",
- "rmp-serde",
- "serde",
- "serde_json",
-]
-
-[[package]]
-name = "extism-convert"
 version = "1.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2e5a978634c28e4b150213cc8265c211f24421a8ee5dea4126ece0dc60cbc709"
 dependencies = [
  "anyhow",
- "base64 0.22.1",
+ "base64",
  "bytemuck",
  "extism-convert-macros",
  "prost",
@@ -119,35 +99,11 @@ dependencies = [
 
 [[package]]
 name = "extism-manifest"
-version = "0.5.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "22b0e600ec289630715ffdc11aca36a26297c3ab7908f14d5bbf3770d102bce7"
-dependencies = [
- "base64 0.21.4",
- "serde",
-]
-
-[[package]]
-name = "extism-manifest"
 version = "1.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a60b6ea31edc0831e28665b4e808175dd5acd4602bfcc5d31f09c97f334238d1"
 dependencies = [
- "base64 0.22.1",
- "serde",
- "serde_json",
-]
-
-[[package]]
-name = "extism-pdk"
-version = "1.0.0-beta.0"
-source = "git+https://github.com/extism/rust-pdk#ddfb8e166bf94e01e4f73a1f02432c1f9de0c9fb"
-dependencies = [
- "anyhow",
- "base64 0.21.4",
- "extism-convert 0.2.0",
- "extism-manifest 0.5.0",
- "extism-pdk-derive 1.0.0-beta.0",
+ "base64",
  "serde",
  "serde_json",
 ]
@@ -159,22 +115,26 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c26a361aeddab8ebbb6157eeed9a8341358d6843c5f5a53677466caf5f0b5eaf"
 dependencies = [
  "anyhow",
- "base64 0.22.1",
- "extism-convert 1.4.1",
- "extism-manifest 1.4.1",
- "extism-pdk-derive 1.2.0",
+ "base64",
+ "extism-convert",
+ "extism-manifest",
+ "extism-pdk-derive 1.2.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde",
  "serde_json",
 ]
 
 [[package]]
-name = "extism-pdk-derive"
-version = "1.0.0-beta.0"
-source = "git+https://github.com/extism/rust-pdk#ddfb8e166bf94e01e4f73a1f02432c1f9de0c9fb"
+name = "extism-pdk"
+version = "1.2.0"
+source = "git+https://github.com/extism/rust-pdk#6a3c50a965167078c131b24bd87d6513c1d6537e"
 dependencies = [
- "proc-macro2",
- "quote",
- "syn",
+ "anyhow",
+ "base64",
+ "extism-convert",
+ "extism-manifest",
+ "extism-pdk-derive 1.2.0 (git+https://github.com/extism/rust-pdk)",
+ "serde",
+ "serde_json",
 ]
 
 [[package]]
@@ -189,10 +149,20 @@ dependencies = [
 ]
 
 [[package]]
+name = "extism-pdk-derive"
+version = "1.2.0"
+source = "git+https://github.com/extism/rust-pdk#6a3c50a965167078c131b24bd87d6513c1d6537e"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
 name = "greet"
 version = "0.1.0"
 dependencies = [
- "extism-pdk 1.0.0-beta.0",
+ "extism-pdk 1.2.0 (git+https://github.com/extism/rust-pdk)",
 ]
 
 [[package]]
@@ -206,7 +176,7 @@ name = "http"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "extism-pdk 1.0.0-beta.0",
+ "extism-pdk 1.2.0 (git+https://github.com/extism/rust-pdk)",
  "serde",
 ]
 
@@ -239,7 +209,7 @@ checksum = "af150ab688ff2122fcef229be89cb50dd66af9e01a4ff320cc137eecc9bacc38"
 name = "loop_forever"
 version = "0.1.0"
 dependencies = [
- "extism-pdk 1.0.0-beta.0",
+ "extism-pdk 1.2.0 (git+https://github.com/extism/rust-pdk)",
 ]
 
 [[package]]
@@ -276,7 +246,7 @@ name = "memory"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "extism-pdk 1.0.0-beta.0",
+ "extism-pdk 1.2.0 (git+https://github.com/extism/rust-pdk)",
  "serde",
 ]
 
@@ -357,11 +327,20 @@ dependencies = [
 ]
 
 [[package]]
+name = "read_write"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "extism-pdk 1.2.0 (git+https://github.com/extism/rust-pdk)",
+ "serde",
+]
+
+[[package]]
 name = "reflect"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "extism-pdk 1.0.0-beta.0",
+ "extism-pdk 1.2.0 (git+https://github.com/extism/rust-pdk)",
  "serde",
 ]
 
@@ -428,7 +407,7 @@ dependencies = [
 name = "sleep"
 version = "0.1.0"
 dependencies = [
- "extism-pdk 1.2.0",
+ "extism-pdk 1.2.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde",
 ]
 
@@ -443,7 +422,7 @@ name = "store_credit"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "extism-pdk 1.0.0-beta.0",
+ "extism-pdk 1.2.0 (git+https://github.com/extism/rust-pdk)",
  "serde",
 ]
 
