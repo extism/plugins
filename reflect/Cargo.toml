@@ -11,4 +11,4 @@ extism-pdk = {workspace = true}
 serde = {workspace = true}
 
 [lib]
-crate_type = ["cdylib"]
+crate-type = ["cdylib"]
