@@ -9,4 +9,4 @@ edition = "2021"
 extism-pdk = {workspace = true}
 
 [lib]
-crate_type = ["cdylib"]
+crate-type = ["cdylib"]

@@ -11,4 +11,4 @@ serde = {workspace = true}
 anyhow = {workspace = true}
 
 [lib]
-crate_type = ["cdylib"]
+crate-type = ["cdylib"]
